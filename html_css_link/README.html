@@ -434,9 +434,139 @@ C言語のソースコードファイルは必ず拡張子<code>.c</code>を使�
 プログラムの出力がコマンドラインに表示されます。</p>
 </li>
 </ol>
-<h3 id="演習問題">演習問題</h3>
+<h2 id="ファイル名のつけ方">ファイル名のつけ方</h2>
+<ul>
+<li>ファイル名は<code>YYYYMMDD_問題番号.c</code>の形式で保存してください（例: <code>20231005_1.c</code>）。</li>
+<li>実行ファイルは、ソースファイル名から拡張子を除いた名前で生成してください（例: <code>20231005_1</code>）。</li>
+</ul>
+<h2 id="実行方法-1">実行方法</h2>
+<p>これらのプログラムを保存し、以下の手順でコンパイルと実行を行ってください。</p>
+<ol>
+<li>
+<p>ソースコードを保存します（例: <code>20250418_1.c</code>）。</p>
+</li>
+<li>
+<p>以下のコマンドでコンパイルします。</p>
+<pre><code class="language-bash">gcc -o 20250418_1 20250418_1.c
+</code></pre>
+</li>
+<li>
+<p>以下のコマンドで実行します。</p>
+<pre><code class="language-bash">./20250418_1
+</code></pre>
+</li>
+</ol>
+<h2 id="c言語-基礎問題">C言語 基礎問題</h2>
+<h3 id="問題1-hello-world-を出力しよう">問題1: Hello, World! を出力しよう</h3>
+<pre><code class="language-c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> {
+    <span class="hljs-comment">// ここにコードを書こう</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><strong>問題</strong>: Hello, World!と画面に表示させてください。</p>
+<hr>
+<h3 id="問題2-変数に値を代入して表示しよう">問題2: 変数に値を代入して表示しよう</h3>
+<pre><code class="language-c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> {
+    <span class="hljs-type">int</span> number;
+    <span class="hljs-comment">// ここで変数に10を代入して表示しよう</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><strong>問題</strong>: 変数 <code>number</code> に10を代入し、<code>number = 10</code>と表示してください。</p>
+<hr>
+<h3 id="問題3-2つの整数を入力して合計を求めよう">問題3: 2つの整数を入力して合計を求めよう</h3>
+<pre><code class="language-c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> {
+    <span class="hljs-type">int</span> a, b;
+    <span class="hljs-comment">// 入力を受け取り、合計を出力しよう</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><strong>問題</strong>: ユーザーから整数を2つ入力し、合計を出力してください。</p>
+<hr>
+<h3 id="問題4-偶数奇数を判定しよう">問題4: 偶数・奇数を判定しよう</h3>
+<pre><code class="language-c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> {
+    <span class="hljs-type">int</span> num;
+    <span class="hljs-comment">// 奇数か偶数かを判定しよう</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><strong>問題</strong>: ユーザーが入力した整数が偶数か奇数かを判定して表示してください。</p>
+<hr>
+<h3 id="問題5-if文の練習成績評価">問題5: if文の練習：成績評価</h3>
+<pre><code class="language-c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> {
+    <span class="hljs-type">int</span> score;
+    <span class="hljs-comment">// scoreが80以上なら「合格」と表示しよう</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><strong>問題</strong>: 点数（整数）を入力し、80点以上なら「合格」、それ以外は「不合格」と表示してください。</p>
+<hr>
+<h3 id="問題6-for文の練習110まで出力しよう">問題6: for文の練習：1〜10まで出力しよう</h3>
+<pre><code class="language-c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> {
+    <span class="hljs-comment">// for文で1から10までを出力しよう</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><strong>問題</strong>: 1から10までの整数を1つずつ表示してください。</p>
+<hr>
+<h3 id="問題7-while文でカウントダウンしよう">問題7: while文でカウントダウンしよう</h3>
+<pre><code class="language-c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> {
+    <span class="hljs-type">int</span> i = <span class="hljs-number">5</span>;
+    <span class="hljs-comment">// while文で5から1までカウントダウンしよう</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><strong>問題</strong>: 変数<code>i</code>を使って「5 4 3 2 1」と表示してください。</p>
+<hr>
+<h3 id="問題8-掛け算九九の1の段を表示しよう">問題8: 掛け算九九の1の段を表示しよう</h3>
+<pre><code class="language-c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> {
+    <span class="hljs-comment">// 1の段：1×1〜1×9まで表示</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><strong>問題</strong>: 1 x 1 = 1 から 1 x 9 = 9 までをfor文で出力してください。</p>
+<hr>
+<h3 id="問題9-配列にデータを入れて表示しよう">問題9: 配列にデータを入れて表示しよう</h3>
+<pre><code class="language-c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> {
+    <span class="hljs-type">int</span> scores[<span class="hljs-number">5</span>] = {<span class="hljs-number">90</span>, <span class="hljs-number">80</span>, <span class="hljs-number">70</span>, <span class="hljs-number">60</span>, <span class="hljs-number">50</span>};
+    <span class="hljs-comment">// for文を使ってscoresの中身を出力しよう</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><strong>問題</strong>: 配列<code>scores</code>の全ての要素を1行ずつ出力してください。</p>
+<hr>
+<h3 id="問題10-関数を作って使ってみよう">問題10: 関数を作って使ってみよう</h3>
+<pre><code class="language-c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-comment">// ここに関数を定義しよう</span>
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> {
+    <span class="hljs-comment">// 関数を呼び出そう</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><strong>問題</strong>: 整数2つを引数に取り、足し算の結果を返す関数<code>add</code>を作成し、<code>3 + 5 = 8</code>を表示してください。</p>
+<h2 id="演習問題">演習問題</h2>
 <p>以下の演習問題を解いて、C言語の基本的な構文や機能を学びましょう。</p>
-<h4 id="問題1-四則演算">問題1: 四則演算</h4>
+<h3 id="問題1-四則演算">問題1: 四則演算</h3>
 <p><strong>標準入力</strong><br>
 2つの整数と1つの演算子（<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>）を入力として受け取り、計算結果を標準出力に表示するプログラムを作成してください。</p>
 <p><strong>条件</strong></p>
@@ -451,7 +581,7 @@ C言語のソースコードファイルは必ず拡張子<code>.c</code>を使�
 <p>出力:</p>
 <pre><code>15
 </code></pre>
-<h4 id="問題2-偶数奇数判定">問題2: 偶数・奇数判定</h4>
+<h3 id="問題2-偶数奇数判定">問題2: 偶数・奇数判定</h3>
 <p><strong>標準入力</strong><br>
 1つの整数を入力として受け取り、その整数が偶数か奇数かを判定して標準出力に表示するプログラムを作成してください。</p>
 <p><strong>条件</strong></p>
@@ -465,7 +595,7 @@ C言語のソースコードファイルは必ず拡張子<code>.c</code>を使�
 <p>出力:</p>
 <pre><code>Odd
 </code></pre>
-<h4 id="問題3-数列の合計">問題3: 数列の合計</h4>
+<h3 id="問題3-数列の合計">問題3: 数列の合計</h3>
 <p><strong>標準入力</strong><br>
 1つの整数<code>N</code>を入力として受け取り、1から<code>N</code>までの整数の合計を計算して標準出力に表示するプログラムを作成してください。</p>
 <p><strong>条件</strong></p>
@@ -479,7 +609,7 @@ C言語のソースコードファイルは必ず拡張子<code>.c</code>を使�
 <p>出力:</p>
 <pre><code>15
 </code></pre>
-<h4 id="問題4-フィボナッチ数列">問題4: フィボナッチ数列</h4>
+<h3 id="問題4-フィボナッチ数列">問題4: フィボナッチ数列</h3>
 <p><strong>標準入力</strong><br>
 1つの整数<code>N</code>を入力として受け取り、フィボナッチ数列の最初の<code>N</code>項を標準出力に表示するプログラムを作成してください。</p>
 <p><strong>条件</strong></p>
@@ -498,7 +628,7 @@ C言語のソースコードファイルは必ず拡張子<code>.c</code>を使�
 <p>出力:</p>
 <pre><code>0 1 1 2 3 5
 </code></pre>
-<h4 id="問題5-数当てゲーム">問題5: 数当てゲーム</h4>
+<h3 id="問題5-数当てゲーム">問題5: 数当てゲーム</h3>
 <p><strong>標準入力</strong><br>
 1から100までのランダムな整数を生成し、ユーザーにその数を当てさせるプログラムを作成してください。ユーザーが入力した数が正解より大きい場合は「Too high」、小さい場合は「Too low」と表示し、正解の場合は「Correct」と表示して終了します。</p>
 <p><strong>条件</strong></p>
@@ -512,22 +642,6 @@ C言語のソースコードファイルは必ず拡張子<code>.c</code>を使�
 <p>出力:</p>
 <pre><code>Too low
 </code></pre>
-<h3 id="ファイル名のつけ方">ファイル名のつけ方</h3>
-<ul>
-<li>ファイル名は<code>YYYYMMDD_問題番号.c</code>の形式で保存してください（例: <code>20231005_1.c</code>）。</li>
-<li>実行ファイルは、ソースファイル名から拡張子を除いた名前で生成してください（例: <code>20231005_1</code>）。</li>
-</ul>
-<h3 id="実行方法-1">実行方法</h3>
-<ol>
-<li>
-<p>ソースコードを保存します（例: <code>20231005_1.c</code>）。</p>
-</li>
-<li>
-<p>以下のコマンドでコンパイルします。</p>
-<pre><code class="language-bash">gcc -o 20231005_1 20231005_1.c
-</code></pre>
-</li>
-</ol>
 <h3 id="サンプルプログラム">サンプルプログラム</h3>
 <p>以下は、各問題のサンプルプログラムです。</p>
 <h4 id="問題1-四則演算-1">問題1: 四則演算</h4>
@@ -641,23 +755,14 @@ C言語のソースコードファイルは必ず拡張子<code>.c</code>を使�
 
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
+
+
+
+<span class="hljs-meta"># paspberry pi </span>
+IP : <span class="hljs-number">10.250</span><span class="hljs-number">.4</span><span class="hljs-number">.28</span>
+固定してよい
+
 </code></pre>
-<p>これらのプログラムを保存し、以下の手順でコンパイルと実行を行ってください。</p>
-<ol>
-<li>
-<p>ソースコードを保存します（例: <code>20250418_1.c</code>）。</p>
-</li>
-<li>
-<p>以下のコマンドでコンパイルします。</p>
-<pre><code class="language-bash">gcc -o 20250418_1 20250418_1.c
-</code></pre>
-</li>
-<li>
-<p>以下のコマンドで実行します。</p>
-<pre><code class="language-bash">./20250418_1
-</code></pre>
-</li>
-</ol>
 
             
             
