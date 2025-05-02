@@ -943,9 +943,10 @@ int main() {
     return 0;
 }
 
+```
 
+# paspberry pi
 
-# paspberry pi 
 IP : 10.250.4.28
 固定してよい
 
