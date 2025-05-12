@@ -109,6 +109,13 @@ for filename in os.listdir("."):
                 if not any(cls.startswith("language-") for cls in current_classes):
                     lang = detect_language(code_tag.get_text())
                     code_tag["class"] = [f"language-{lang}"]
+        # 目次<ul>に class="toc" を追加
+        
+        toc_h2 = soup.find("h2", {"id": "目次"})
+        if toc_h2:
+            next_ul = toc_h2.find_next_sibling("ul")
+            if next_ul:
+                next_ul["class"] = next_ul.get("class", []) + ["toc"]
 
         # トグルUIの挿入（重複防止）
         body = soup.find("body")
