@@ -213,41 +213,47 @@ body.dark-mode .theme-header button {
   background-color: #4fc3f7;
   color: #000;
 }
-
-/* ====== 目次 (Table of Contents) ====== */
-.toc {
+/* ====== 目次（TOC）折りたたみ＋スクロール対応 ====== */
+.toc-container {
   position: fixed;
   top: 120px;
   left: 20px;
-  width: 200px;
+  z-index: 998;
+  width: 220px;
+}
+
+.toc-toggle {
+  width: 100%;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  padding: 0.6em;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.toc-toggle:hover {
+  background-color: #005fa3;
+}
+
+.toc {
+  max-height: 400px;
+  overflow-y: auto;
   background-color: #f9f9f9;
-  padding: 1rem;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 1rem;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
   font-size: 0.9rem;
   line-height: 1.6;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 998;
 }
 
-.toc ul {
-  list-style: none;
-  padding-left: 1em;
+.toc.collapsed {
+  display: none;
 }
 
-.toc li {
-  margin-bottom: 0.5em;
-}
-
-.toc a {
-  color: #007acc;
-}
-
-.toc a:hover {
-  text-decoration: underline;
-}
-
-/* ダークモード対応 */
 body.dark-mode .toc {
   background-color: #2a2a2a;
   border-color: #555;
@@ -258,9 +264,13 @@ body.dark-mode .toc a {
   color: #4fc3f7;
 }
 
-/* モバイル表示では非表示にする */
+body.dark-mode .toc-toggle {
+  background-color: #4fc3f7;
+  color: black;
+}
+
 @media screen and (max-width: 800px) {
-  .toc {
+  .toc-container {
     display: none;
   }
 }

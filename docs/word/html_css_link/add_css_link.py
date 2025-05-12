@@ -14,7 +14,7 @@ if os.path.exists(css_filename):
 else:
     print(f"{css_filename} が見つかりません。CSSはコピーされませんでした。")
 
-# トグル用HTMLとJS
+# テーマ切替用HTMLとJS
 toggle_html = '''
 <header class="theme-header">
   <span>🌓 テーマ:</span>
@@ -51,8 +51,7 @@ toggle_script = '''
 </script>
 '''
 
-
-# highlight.js の読み込み（ライトテーマ）
+# highlight.js の読み込み
 highlight_links = '''
 <link id="hljs-light" rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -63,6 +62,19 @@ highlight_links = '''
 <script>hljs.highlightAll();</script>
 '''
 
+# 目次用のJS
+toc_toggle_script = '''
+<script>
+  const tocBtn = document.querySelector('.toc-toggle');
+  const toc = document.querySelector('.toc');
+  if (tocBtn && toc) {
+    tocBtn.addEventListener('click', () => {
+      toc.classList.toggle('collapsed');
+      tocBtn.textContent = toc.classList.contains('collapsed') ? '📖 目次を表示' : '📕 目次を隠す';
+    });
+  }
+</script>
+'''
 
 # 言語自動判別関数
 def detect_language(code_text):
@@ -88,41 +100,49 @@ for filename in os.listdir("."):
         with open(filename, "r", encoding="utf-8") as file:
             soup = BeautifulSoup(file, "html.parser")
 
-        # <head> に CSS や highlight.js を追加
         head = soup.find("head")
         if head:
-            # style.css が無ければ追加
             if not soup.find("link", href="style.css"):
-                style_tag = soup.new_tag("link", rel="stylesheet", href="style.css")
-                head.append(style_tag)
+                head.append(soup.new_tag("link", rel="stylesheet", href="style.css"))
 
-            # highlight.js のCDNを追加（すでに含まれてない場合）
             if "highlight.min.js" not in str(soup):
-                highlight_soup = BeautifulSoup(highlight_links, "html.parser")
-                head.append(highlight_soup)
+                head.append(BeautifulSoup(highlight_links, "html.parser"))
 
-        # <pre><code> に language-xxx クラス自動追加
+        # コードに言語クラス追加
         for code_tag in soup.find_all("code"):
-            parent = code_tag.parent
-            if parent.name == "pre":
-                current_classes = code_tag.get("class", [])
-                if not any(cls.startswith("language-") for cls in current_classes):
+            if code_tag.parent.name == "pre":
+                if not any(cls.startswith("language-") for cls in code_tag.get("class", [])):
                     lang = detect_language(code_tag.get_text())
                     code_tag["class"] = [f"language-{lang}"]
-        # 目次<ul>に class="toc" を追加
-        
-        toc_h2 = soup.find("h2", {"id": "目次"})
-        if toc_h2:
-            next_ul = toc_h2.find_next_sibling("ul")
-            if next_ul:
-                next_ul["class"] = next_ul.get("class", []) + ["toc"]
 
-        # トグルUIの挿入（重複防止）
         body = soup.find("body")
         if body:
             if not soup.find("header", {"class": "theme-header"}):
                 body.insert(0, BeautifulSoup(toggle_html, "html.parser"))
                 body.append(BeautifulSoup(toggle_script, "html.parser"))
+
+            # 目次の折りたたみ対応：h2#目次と次のulをラップ
+            toc_h2 = soup.find("h2", {"id": "目次"})
+            if toc_h2:
+                toc_ul = toc_h2.find_next_sibling("ul")
+                if toc_ul:
+                    toc_container = soup.new_tag("div", attrs={"class": "toc-container"})
+                    toggle_btn = soup.new_tag("button", attrs={"class": "toc-toggle"})
+                    toggle_btn.string = "📖 目次を表示"
+                    toc_div = soup.new_tag("div", attrs={"class": "toc collapsed"})
+                    
+                    # 移動してラップ
+                    toc_div.append(toc_h2.extract())
+                    toc_div.append(toc_ul.extract())
+                    toc_container.append(toggle_btn)
+                    toc_container.append(toc_div)
+
+                    # 最初のbodyに挿入
+                    body.insert(1, toc_container)
+
+                    # JSを追加（最後に1回）
+                    if "toc-toggle" not in str(soup):
+                        body.append(BeautifulSoup(toc_toggle_script, "html.parser"))
 
         # 保存
         output_path = os.path.join(output_dir, filename)
