@@ -10,7 +10,7 @@ body {
 /* ヘッダータグの装飾 */
 h1 {
   font-size: 2.5em;
-  color: #0066cc;
+  color: #7ecc00;
   border-bottom: 3px solid #ccc;
   padding-bottom: 10px;
 }
@@ -31,7 +31,7 @@ h3, h6 {
 /* strongタグとfontタグの表示 */
 strong {
   font-weight: bold;
-  color: #cc0000;
+  color: #0014cc;
 }
 
 font {
@@ -105,4 +105,19 @@ pre {
 code {
   font-family: monospace;
   color: #d63384;
+}
+
+#mouse-stalker {
+    pointer-events: none;
+    position: fixed;
+    top: -10px;
+    left: -10px;
+    width: 20px;
+    height: 20px;
+    background: rgba(0,165,160,0.5);
+    border-radius: 50%;
+    transform: translate(0,0);
+    transition: transform 0.2s;
+    transition-timing-function: ease-out;
+    z-index: 999;
 }
